@@ -1,0 +1,49 @@
+@"
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Test artifacts
+reports/
+screenshots/
+logs/
+downloads/
+allure-results/
+allure-report/
+test-results/
+
+# Playwright
+playwright/.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Node (if any)
+node_modules/
+package-lock.json
+"@ | Out-File -FilePath ".gitignore" -Encoding UTF8

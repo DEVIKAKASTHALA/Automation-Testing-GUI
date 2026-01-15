@@ -1,0 +1,22 @@
+
+{
+  "chromium": {
+    "headless": true,
+    "args": [
+      "--start-maximized",
+      "--disable-blink-features=AutomationControlled",
+      "--disable-dev-shm-usage",
+      "--no-sandbox"
+    ],
+    "viewport": {"width": 1920, "height": 1080}
+  },
+  "firefox": {
+    "headless": true,
+    "args": ["--width=1920", "--height=1080"],
+    "viewport": {"width": 1920, "height": 1080}
+  },
+  "webkit": {
+    "headless": true,
+    "viewport": {"width": 1920, "height": 1080}
+  }
+}

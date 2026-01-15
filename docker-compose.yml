@@ -1,0 +1,47 @@
+@"
+version: '3.8'
+
+services:
+  selenium-hub:
+    image: selenium/hub:latest
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+      - "4442:4442"
+      - "4443:4443"
+
+  chrome:
+    image: selenium/node-chrome:latest
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    shm_size: 2gb
+
+  firefox:
+    image: selenium/node-firefox:latest
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    shm_size: 2gb
+
+  tests:
+    build: .
+    depends_on:
+      - selenium-hub
+      - chrome
+      - firefox
+    volumes:
+      - ./:/app
+      - ./reports:/app/reports
+      - ./screenshots:/app/screenshots
+    environment:
+      - SELENIUM_HUB_URL=http://selenium-hub:4444
+      - BASE_URL=https://example.com
+    command: pytest tests/ -n 4
+"@ | Out-File -FilePath "docker-compose.yml" -Encoding UTF8
