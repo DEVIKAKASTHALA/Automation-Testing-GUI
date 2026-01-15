@@ -7,7 +7,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 def capture_screenshot(page, name='screenshot'):
-    \"\"\"Capture screenshot with timestamp\"\"\"
+    
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     filename = f'{name}_{timestamp}.png'
     filepath = Config.SCREENSHOT_DIR / filename
@@ -18,7 +18,7 @@ def capture_screenshot(page, name='screenshot'):
     return filepath
 
 def capture_element_screenshot(page, selector, name='element'):
-    \"\"\"Capture screenshot of specific element\"\"\"
+   
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     filename = f'{name}_{timestamp}.png'
     filepath = Config.SCREENSHOT_DIR / filename

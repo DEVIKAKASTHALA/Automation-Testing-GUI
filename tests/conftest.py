@@ -1,4 +1,4 @@
-@"
+
 import pytest
 from playwright.sync_api import sync_playwright
 from config.config import Config
@@ -110,4 +110,3 @@ def pytest_configure(config):
     config.addinivalue_line(
         'markers', 'responsive: Responsive design tests'
     )
-"@ | Out-File -FilePath "tests\conftest.py" -Encoding UTF8
